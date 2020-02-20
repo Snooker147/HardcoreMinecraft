@@ -3,6 +3,8 @@ package eu.ritr.hardcoremc.features;
 import eu.ritr.hardcoremc.base.Feature;
 import net.minecraft.client.MainWindow;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -16,6 +18,7 @@ public class LowBrightness extends Feature
         super("lowBrightness");
     }
 
+    @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public void tickClient(PlayerTickEvent e)
     {

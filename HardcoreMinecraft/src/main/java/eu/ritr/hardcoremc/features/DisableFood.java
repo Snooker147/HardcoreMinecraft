@@ -6,6 +6,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
@@ -19,6 +21,7 @@ public class DisableFood extends Feature
         super("disableFood");
     }
 
+    @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public void onRenderOverlay(RenderGameOverlayEvent.Pre e)
     {
@@ -61,7 +64,7 @@ public class DisableFood extends Feature
         PlayerEntity p = (PlayerEntity)e.getEntityLiving();
         Food food = stack.getItem().getFood();
 
-        float hp = p.getHealth() + (int)MathHelper.clamp(food.getSaturation() * 10, 1, 20);
+        float hp = p.getHealth() + (int)MathHelper.clamp(food.getSaturation() * 8, 1, 20);
         
         p.setHealth(MathHelper.clamp(hp, 1, p.getMaxHealth()));
     }

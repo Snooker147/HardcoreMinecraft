@@ -2,6 +2,8 @@ package eu.ritr.hardcoremc.features;
 
 import eu.ritr.hardcoremc.base.Feature;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -14,6 +16,7 @@ public class DisableDebugScreen extends Feature
 		super("disableDebugScreen");
 	}
 	
+	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
 	public void onRender(RenderGameOverlayEvent e)
 	{

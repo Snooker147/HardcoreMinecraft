@@ -12,6 +12,8 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -25,6 +27,7 @@ public class DisableCooldown extends Feature
         super("disableCooldown");
     }
 
+    @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public void tickClient(PlayerTickEvent e)
     {

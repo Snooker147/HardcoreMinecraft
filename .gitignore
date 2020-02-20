@@ -5,3 +5,5 @@ bin
 .metadata
 .classpath
 .project
+
+ServerTest

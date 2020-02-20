@@ -4,8 +4,7 @@ import eu.ritr.hardcoremc.Util;
 import eu.ritr.hardcoremc.base.Feature;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 
 public class FoodUnstackable extends Feature
 {
@@ -15,6 +14,20 @@ public class FoodUnstackable extends Feature
         super("foodUnstackable");
     }
     
+    @SuppressWarnings("deprecation")
+	@Override
+    public void setupAfter(FMLLoadCompleteEvent e)
+    {
+    	for(Item item : Registry.ITEM)
+    	{
+    		if (item.isFood())
+            {
+    			Util.setPrivateValue(Item.class, item, "maxStackSize", "field_77777_bU", 1);
+            }
+    	}
+    }
+    
+    /*
     @SuppressWarnings("deprecation")
 	@SubscribeEvent
     public void onStart(FMLServerStartedEvent e)
@@ -33,6 +46,7 @@ public class FoodUnstackable extends Feature
             }
     	}
     }
+    */
     
     /*
     @SubscribeEvent

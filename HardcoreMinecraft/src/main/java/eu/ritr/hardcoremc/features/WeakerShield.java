@@ -5,8 +5,7 @@ import eu.ritr.hardcoremc.base.Feature;
 import net.minecraft.item.Item;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.util.registry.Registry;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 
 public class WeakerShield extends Feature
 {
@@ -15,16 +14,12 @@ public class WeakerShield extends Feature
     {
         super("weakerShield");
     }
-
-    /**
-     * {@link FoodUnstackable#onStart(FMLServerStartedEvent)} for more info of why I used this system
-     * @param e
-     */
+    
     @SuppressWarnings("deprecation")
-	@SubscribeEvent
-    public void onStart(FMLServerStartedEvent e)
-    {	
-        for (Item item : Registry.ITEM)
+	@Override
+    public void setupAfter(FMLLoadCompleteEvent e) 
+    {
+    	for (Item item : Registry.ITEM)
         {
             if(item instanceof ShieldItem)
             {

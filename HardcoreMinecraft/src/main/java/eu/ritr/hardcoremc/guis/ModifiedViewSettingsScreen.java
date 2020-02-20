@@ -9,11 +9,14 @@ import net.minecraft.client.gui.widget.list.OptionsRowList;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.AbstractOption;
 import net.minecraft.client.settings.FullscreenResolutionOption;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@OnlyIn(Dist.CLIENT)
 public class ModifiedViewSettingsScreen extends VideoSettingsScreen
 {
     protected Screen parent;

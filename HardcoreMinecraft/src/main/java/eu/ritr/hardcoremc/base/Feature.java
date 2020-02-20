@@ -2,6 +2,7 @@ package eu.ritr.hardcoremc.base;
 
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 
 /**
  * It is automatically registered as Event listener
@@ -20,7 +21,8 @@ public abstract class Feature
 
     public void setup(FMLCommonSetupEvent e) {}
     public void setupClient(FMLClientSetupEvent e) {}
-
+    public void setupAfter(FMLLoadCompleteEvent e) {}
+    
     public String getName()
     {
         return name;

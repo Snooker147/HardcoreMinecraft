@@ -2,7 +2,9 @@ modLoader="javafml" #mandatory
 loaderVersion="[28,)" #mandatory (26 is current forge version)
 [[mods]] #mandatory
 modId="hardcoremc"
-version="${file.jarVersion}" #mandatory
+version="1.0.1" #mandatory
 displayName="Nostalgic Features"
 displayURL="https://github.com/Snooker147" #optional
-credits="Snooker147, kakajuda" #optional
+logoFile="logo.png"
+credits="Kakajuda for being here all the time" #optional
+description="This mod simply aims to recreate old hardcore Minecraft experience in the modern version."

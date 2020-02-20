@@ -9,6 +9,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.SettingsScreen;
 import net.minecraft.client.gui.screen.VideoSettingsScreen;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -74,15 +77,12 @@ public class Main
             e.printStackTrace();
         }
 
-        // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
-
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupAfter);
+        	
         MinecraftForge.EVENT_BUS.register(this);
 
         for(Feature f : Features.FEATURES)
@@ -118,6 +118,19 @@ public class Main
             }
         }
     }
+    
+    private void setupAfter(final FMLLoadCompleteEvent event)
+    {
+    	Main.LOGGER.debug("setupAfter");
+    	
+        for(Feature f : Features.FEATURES)
+        {
+            if(f.isEnabled())
+            {
+                f.setupAfter(event);
+            }
+        }
+    }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
@@ -129,6 +142,7 @@ public class Main
 
     }
 
+    @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public void onGuiOpen(GuiOpenEvent e)
     {
