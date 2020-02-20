@@ -21,6 +21,8 @@ Simple mod that translates the old minecraft behaviour to the current version.
 - Disable Cooldown
 	- 1.9 combat system is removed
 	- Axes always deal 1HP damage
+- Disable Debug
+	- Disables the F3 debug screen
 
 ### Configuration
 Find hardcore-mc-features.json file inside the Minecraft installation folder and open it.
