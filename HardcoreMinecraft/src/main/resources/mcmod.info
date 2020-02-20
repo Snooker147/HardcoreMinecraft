@@ -1,10 +1,10 @@
 [{
   "modid": "hardcoremc",
-  "name": "Hardcore Mc",
-  "description": "Yes",
+  "name": "Nostalgic Features",
+  "description": "Brings back the old features of Minecraft, like classic combat, no hunger bar, sprinting etc",
   "version": "1.0.0",
   "mcversion": "1.15.2",,
   "url": "ritr.eu/",
   "authorList": ["Snooker147"],
-  "credits": "I'd like to thank my mother and father."
+  "credits": "Kakajuda for being here all the time"
 }]
