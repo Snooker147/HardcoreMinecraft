@@ -4,7 +4,7 @@ Simple mod that translates the old minecraft behaviour to the current version.
 ### Features:
 - Disable Food
 	- Removes current hunger bar.
- - Food only restores health points
+	- Food only restores health points
 - Low Brightness
 	- Brightness is always set to moody
 - Disable Sprint
