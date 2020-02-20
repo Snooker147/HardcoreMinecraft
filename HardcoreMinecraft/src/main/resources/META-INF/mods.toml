@@ -1,0 +1,8 @@
+modLoader="javafml" #mandatory
+loaderVersion="[28,)" #mandatory (26 is current forge version)
+[[mods]] #mandatory
+modId="hardcoremc"
+version="${file.jarVersion}" #mandatory
+displayName="Hardcore MC"
+displayURL="https://github.com/Snooker147" #optional
+credits="Snooker147" #optional
